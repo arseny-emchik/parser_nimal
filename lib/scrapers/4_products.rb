@@ -30,9 +30,9 @@ module Scrapers
           my_hash['category'] = subcategory['category']
 
           if subcategory['subcategory_name'].scan(/[a-zA-zА]+ [a-zA-zА]+/).empty?
-            my_hash['vendor'] =  subcategory['subcategory_name'].scan(/[a-zA-zА]+/)
+            my_hash['vendor'] =  subcategory['subcategory_name'].scan(/[a-zA-zА]+/).first
           else
-            my_hash['vendor'] = subcategory['subcategory_name'].scan(/[a-zA-zА]+ [a-zA-zА]+/)
+            my_hash['vendor'] = subcategory['subcategory_name'].scan(/[a-zA-zА]+ [a-zA-zА]+/).first
           end
 
           my_hash['item_path'] = p['href']
