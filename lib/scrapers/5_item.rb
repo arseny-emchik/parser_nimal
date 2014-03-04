@@ -37,7 +37,7 @@ module Scrapers
 
         arr_characteristics = []
 
-        characteristics.each_with_index do |c, index|
+        characteristics.each do |c|
           ch = c
           arr_characteristics << c.text.strip unless ch.to_s.include?('<b>')
         end
