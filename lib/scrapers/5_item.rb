@@ -33,6 +33,10 @@ module Scrapers
         image_url = page.parser.css('table.bgray img').first['src']
         my_hash['image_link'] = "#{ROOT_URL}#{image_url}"
 
+        Dir.mkdir 'result' unless Dir.exist?('result')
+        Dir.mkdir 'result/images' unless Dir.exist?('result/images')
+        File.open("result/images/#{image_url.scan(/[0-9a-z._A-zА]+$/).first}", 'wb') {|f| f.write(open(URI::encode("#{ROOT_URL}#{image_url}")).read)}
+
         characteristics = page.parser.css('table.techs2 td')
 
         arr_characteristics = []
